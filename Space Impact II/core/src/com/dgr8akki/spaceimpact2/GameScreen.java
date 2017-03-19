@@ -1,6 +1,5 @@
 package com.dgr8akki.spaceimpact2;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -19,21 +18,21 @@ import java.util.Iterator;
 
 public class GameScreen implements Screen {
         final SpaceImpact2 game;
-        private Texture selfTankImage;
+        Texture selfTankImage;
         public static Texture backgroundTexture;
-        private Texture enemyTankImage;
-        private Texture bulletImage;
-        private Sound destroySound;
-        private Music spaceMusic;
-        private SpriteBatch batch;
-        private OrthographicCamera camera;
-        private Rectangle selfTank,bullet;
-        private Array<Rectangle> enemyTanks;
+        Texture enemyTankImage;
+        Texture bulletImage;
+        Sound destroySound;
+        Music spaceMusic;
+        SpriteBatch batch;
+        OrthographicCamera camera;
+        Rectangle selfTank,bullet;
+        Array<Rectangle> enemyTanks;
         private Array<Rectangle> bullets;
         private long lastEnemyTankTime;
         private long lastBulletTime;
-        public final static int windowsWidth = 1366;
-        public final static int windowsHeight = 768;
+        public final int windowsWidth = 1366;
+        public final int windowsHeight = 768;
         public static Sprite backgroundSprite;
 
 	public GameScreen(final SpaceImpact2 game) {
@@ -82,6 +81,7 @@ public class GameScreen implements Screen {
             lastEnemyTankTime = TimeUtils.nanoTime();
         }
         
+        @Override
 	public void render (float delta) {  
            //Gdx.gl.glClearColor(1f, 1f, 1f, 0);
            //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
