@@ -10,4 +10,5 @@ public class GlobalVariables {
   public static int maxLevelScore = 10;
   public static int windowsWidth = 1366;
   public static int windowsHeight = 768;
+  public static int perLevelScore = 0;
 }

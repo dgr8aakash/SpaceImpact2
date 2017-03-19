@@ -33,6 +33,7 @@ public class GameScreenLevel2 implements Screen {
         private long lastEnemyTankTime;
         private long lastBulletTime;
         public static Sprite backgroundSprite;
+        int enemiesLeft = GlobalVariables.maxLevelScore;
         
 
 	public GameScreenLevel2(final SpaceImpact2 game) {
@@ -100,6 +101,8 @@ public class GameScreenLevel2 implements Screen {
            batch.begin();
            backgroundSprite.draw(batch);
            batch.draw(selfTankImage, selfTank.x, selfTank.y);
+           game.font.draw(batch, "Enemies Left: " + enemiesLeft, 0, GlobalVariables.windowsHeight);
+           game.font.draw(batch, "Scores: " + GlobalVariables.score, GlobalVariables.windowsWidth - 200, GlobalVariables.windowsHeight);
            batch.draw(bulletImage, bullet.x, bullet.y);
            for(Rectangle enemyTank: enemyTanks) {
               batch.draw(enemyTankImage, enemyTank.x, enemyTank.y);
@@ -138,7 +141,7 @@ public class GameScreenLevel2 implements Screen {
            Iterator<Rectangle> iter = enemyTanks.iterator();
            while(iter.hasNext() ) {
               Rectangle enemyTank = iter.next();         
-              enemyTank.y -= 200 * Gdx.graphics.getDeltaTime();
+              enemyTank.y -= 400 * Gdx.graphics.getDeltaTime();
 
               if(enemyTank.y + 64 < 0) iter.remove();
               if(enemyTank.overlaps(selfTank)) {
@@ -153,8 +156,10 @@ public class GameScreenLevel2 implements Screen {
                  iter.remove();
                  bullet.y = -200;
                  GlobalVariables.score++;
-                 if (GlobalVariables.score == GlobalVariables.maxLevelScore) {
-                    game.setScreen(new GameScreenLevel2(game));
+                 GlobalVariables.perLevelScore++;
+                 enemiesLeft--;
+                 if (GlobalVariables.perLevelScore == GlobalVariables.maxLevelScore || GlobalVariables.perLevelScore > 0) {
+                    game.setScreen(new GameOverScreen(game));
                  dispose(); 
                  }
               }
