@@ -14,7 +14,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.dgr8akki.spaceimpact2.GlobalVariables;
 import java.util.Iterator;
 
 public class GameScreenLevel2 implements Screen {
@@ -24,6 +23,7 @@ public class GameScreenLevel2 implements Screen {
         Texture enemyTankImage;
         Texture bulletImage;
         Sound destroySound;
+        int perLevelScore = 0;
         Music spaceMusic;
         SpriteBatch batch;
         OrthographicCamera camera;
@@ -39,10 +39,10 @@ public class GameScreenLevel2 implements Screen {
 	public GameScreenLevel2(final SpaceImpact2 game) {
             this.game = game;
             // load the images for the selfTank and the enemy tanks, 64x64 pixels each
-          enemyTankImage = new Texture(Gdx.files.internal("enemyTank.png"));
+          enemyTankImage = new Texture(Gdx.files.internal("enemyTank2.png"));
           bulletImage = new Texture(Gdx.files.internal("selfTank.png"));
           selfTankImage = new Texture(Gdx.files.internal("selfTank.png"));
-          backgroundTexture = new Texture(Gdx.files.internal("background.jpg"));
+          backgroundTexture = new Texture(Gdx.files.internal("background2.jpg"));
           backgroundSprite =new Sprite(backgroundTexture);
 
           // load the drop sound effect and the rain background "music"
@@ -156,9 +156,9 @@ public class GameScreenLevel2 implements Screen {
                  iter.remove();
                  bullet.y = -200;
                  GlobalVariables.score++;
-                 GlobalVariables.perLevelScore++;
+                 perLevelScore++;
                  enemiesLeft--;
-                 if (GlobalVariables.perLevelScore == GlobalVariables.maxLevelScore || GlobalVariables.perLevelScore > 0) {
+                 if (perLevelScore == GlobalVariables.maxLevelScore) {
                     game.setScreen(new GameOverScreen(game));
                  dispose(); 
                  }

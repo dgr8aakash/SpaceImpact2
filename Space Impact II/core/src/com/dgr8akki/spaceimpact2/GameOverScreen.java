@@ -9,8 +9,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import static com.dgr8akki.spaceimpact2.GameScreenAI.windowsHeight;
 import static com.dgr8akki.spaceimpact2.GameScreenAI.windowsWidth;
+import static com.dgr8akki.spaceimpact2.MainMenuScreen.welcomeBackgroundSprite;
+import static com.dgr8akki.spaceimpact2.MainMenuScreen.welcomeBackgroundTexture;
 
 /**
  *
@@ -26,6 +30,8 @@ public class GameOverScreen implements Screen{
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, windowsWidth, windowsHeight);
+        GlobalVariables.backgroundTexture = new Texture(Gdx.files.internal("GameOverBackground.png"));
+        GlobalVariables.backgroundSprite =new Sprite(GlobalVariables.backgroundTexture);
     }
 
     @Override
@@ -41,8 +47,8 @@ public class GameOverScreen implements Screen{
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Game Over!!! ", 500, 550);
-        game.font.draw(game.batch, "Tap anywhere to Exit!", 100, 500);
+        GlobalVariables.backgroundSprite.draw(game.batch);
+        game.font.draw(game.batch, "Your Final Score :" + GlobalVariables.score, GlobalVariables.windowsWidth - 250, GlobalVariables.windowsHeight - 100);
         game.batch.end();
 
         if (Gdx.input.isTouched()) {

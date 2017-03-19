@@ -33,6 +33,7 @@ public class GameScreen implements Screen {
         private long lastBulletTime;
         public static Sprite backgroundSprite;
         int enemiesLeft = GlobalVariables.maxLevelScore;
+        int perLevelScore = 0;
 
 	public GameScreen(final SpaceImpact2 game) {
             this.game = game;
@@ -99,7 +100,7 @@ public class GameScreen implements Screen {
            backgroundSprite.draw(batch);
            batch.draw(selfTankImage, selfTank.x, selfTank.y);
            game.font.draw(batch, "Enemies Left: " + enemiesLeft, 0, GlobalVariables.windowsHeight);
-           game.font.draw(batch, "Scores: " + GlobalVariables.score, GlobalVariables.windowsWidth - 200, GlobalVariables.windowsHeight);
+           game.font.draw(batch, "Scores: " + GlobalVariables.score, GlobalVariables.windowsWidth - 70, GlobalVariables.windowsHeight);
            batch.draw(bulletImage, bullet.x, bullet.y);
            for(Rectangle enemyTank: enemyTanks) {
               batch.draw(enemyTankImage, enemyTank.x, enemyTank.y);
@@ -153,9 +154,9 @@ public class GameScreen implements Screen {
                  iter.remove();
                  bullet.y = -200;
                  GlobalVariables.score++;
-                 GlobalVariables.perLevelScore++;
+                 perLevelScore++;
                  enemiesLeft--;
-                 if (GlobalVariables.perLevelScore == GlobalVariables.maxLevelScore || GlobalVariables.perLevelScore > 0) {
+                 if (perLevelScore == GlobalVariables.maxLevelScore) {
                     game.setScreen(new GameScreenLevel2(game));
                  dispose(); 
                  }

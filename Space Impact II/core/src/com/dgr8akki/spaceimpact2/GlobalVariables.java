@@ -5,10 +5,14 @@
  */
 package com.dgr8akki.spaceimpact2;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+
 public class GlobalVariables {
   public static int score = 0;
   public static int maxLevelScore = 10;
   public static int windowsWidth = 1366;
   public static int windowsHeight = 768;
-  public static int perLevelScore = 0;
+  public static Texture backgroundTexture;
+  public static Sprite backgroundSprite;
 }
