@@ -57,21 +57,16 @@ public class GameScreen implements Screen {
 
           // create a Rectangle to logically represent the bucket
           selfTank = new Rectangle();
-<<<<<<< Updated upstream
-          selfTank.x = windowsWidth / 2 - 64 / 2; // center the bucket horizontally
-          selfTank.y = 20; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
-=======
           selfTank.x = GlobalVariables.windowsWidth / 2 - 64 / 2; // center the bucket horizontally
           selfTank.y = 0; // bottom left corner of the bucket is 20 pixels above the bottom screen edge
->>>>>>> Stashed changes
           selfTank.width = 64;
           selfTank.height = 64;
 
           // create the raindrops array and spawn the first raindrop
           enemyTanks = new Array<Rectangle>();
-          //bullets  = new Array<Rectangle>();
           spawnEnemyTanks();
           spawnBullet();
+
 	}
 
         private void spawnEnemyTanks() {
@@ -139,9 +134,7 @@ public class GameScreen implements Screen {
            // a sound effect as well.
            Iterator<Rectangle> iter = enemyTanks.iterator();
            while(iter.hasNext() ) {
-              Rectangle enemyTank = iter.next();
-             
-              
+              Rectangle enemyTank = iter.next();         
               enemyTank.y -= 200 * Gdx.graphics.getDeltaTime();
 
               if(enemyTank.y + 64 < 0) iter.remove();
@@ -151,8 +144,7 @@ public class GameScreen implements Screen {
                  dispose();
               }
                bullet.y += 200 * Gdx.graphics.getDeltaTime(); 
-               
-            
+
               if (bullet.overlaps(enemyTank))
               {
                  iter.remove();
@@ -202,6 +194,5 @@ public class GameScreen implements Screen {
         bullet.y = selfTank.y;
         bullet.width = 64;
         bullet.height = 64;
-    }
-    
+    }    
 }
