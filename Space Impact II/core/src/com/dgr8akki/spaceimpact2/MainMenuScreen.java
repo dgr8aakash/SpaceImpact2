@@ -6,9 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import static com.dgr8akki.spaceimpact2.GameScreen.windowsHeight;
-import static com.dgr8akki.spaceimpact2.GameScreen.windowsWidth;
-
+import static com.dgr8akki.spaceimpact2.GameScreenAI.windowsHeight;
+import static com.dgr8akki.spaceimpact2.GameScreenAI.windowsWidth;
 public class MainMenuScreen implements Screen {
 
     final SpaceImpact2 game;
