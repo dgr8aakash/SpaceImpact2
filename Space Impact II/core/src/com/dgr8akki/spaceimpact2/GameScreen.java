@@ -72,7 +72,7 @@ public class GameScreen implements Screen {
           spawnBullet();
 	}
 
-        private Rectangle spawnEnemyTanks() {
+        private void spawnEnemyTanks() {
             Rectangle enemyTank = new Rectangle();
             enemyTank.x = MathUtils.random(0, windowsWidth-64);
             enemyTank.y = windowsHeight;
@@ -80,8 +80,6 @@ public class GameScreen implements Screen {
             enemyTank.height = 64;
             enemyTanks.add(enemyTank);
             lastEnemyTankTime = TimeUtils.nanoTime();
-            
-            return enemyTank;
         }
         
 	public void render (float delta) {  
