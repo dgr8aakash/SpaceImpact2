@@ -14,9 +14,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.dgr8akki.spaceimpact2.GlobalVariables;
 import java.util.Iterator;
 
-public class GameScreen implements Screen {
+public class GameScreenLevel2 implements Screen {
         final SpaceImpact2 game;
         Texture selfTankImage;
         public static Texture backgroundTexture;
@@ -32,8 +33,9 @@ public class GameScreen implements Screen {
         private long lastEnemyTankTime;
         private long lastBulletTime;
         public static Sprite backgroundSprite;
+        
 
-	public GameScreen(final SpaceImpact2 game) {
+	public GameScreenLevel2(final SpaceImpact2 game) {
             this.game = game;
             // load the images for the selfTank and the enemy tanks, 64x64 pixels each
           enemyTankImage = new Texture(Gdx.files.internal("enemyTank.png"));
@@ -64,6 +66,7 @@ public class GameScreen implements Screen {
 
           // create the raindrops array and spawn the first raindrop
           enemyTanks = new Array<Rectangle>();
+          //bullets  = new Array<Rectangle>();
           spawnEnemyTanks();
           spawnBullet();
 
